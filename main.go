@@ -1,7 +1,7 @@
 package main
 
 import (
-	"net/http"
+	"architecture/routes"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,17 +9,8 @@ import (
 func main() {
 	r := gin.Default()
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
-
-	r.GET("/healthz", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "healthy",
-		})
-	})
+	r.GET("/ping", routes.Ping)
+	r.GET("/healthz", routes.Healthz)
 
 	r.Run()
 }
