@@ -46,4 +46,6 @@ jobs:
         platforms: all
 
     - name: Build image for test environment
-      run: make docker-push-pr
+      run: |
+        docker buildx create --name my-builder --use
+        make docker-push-pr
