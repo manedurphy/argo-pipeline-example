@@ -14,15 +14,12 @@ jobs:
     - name: Create text file
       run: echo hello > file.txt
 
-    - name: Prepare repo
-      run: git checkout "${GITHUB_REF:11}"
-
     - name: Commit changes
       run: |
         git config --global user.email "dummy@email.com"
         git config --global user.name "First Last"
-        git add . && git commit -a -m "Added text file"
-        git push
+        git add . && git commit -m "Added text file"
+        git push origin master
 
     - name: Set up Go
       uses: actions/setup-go@v2
