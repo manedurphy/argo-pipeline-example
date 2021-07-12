@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 type Post struct {
 	UserId int
 	Id     int
@@ -23,7 +22,14 @@ func Ping(c *gin.Context) {
 }
 
 func GetPost(c *gin.Context) {
-	resp, err := http.Get("https://jsonplaceholder.typicode.com/posts/1")
+	id := c.Param("id")
+
+	if id == "" {
+		internalServerError(c)
+		return
+	}
+
+	resp, err := http.Get("https://jsonplaceholder.typicode.com/posts/" + id)
 
 	if err != nil {
 		internalServerError(c)
@@ -58,4 +64,3 @@ func internalServerError(c *gin.Context) {
 		"message": "internal server error",
 	})
 }
-
