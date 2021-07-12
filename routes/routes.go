@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+
 type Post struct {
 	UserId int
 	Id     int
@@ -57,3 +58,4 @@ func internalServerError(c *gin.Context) {
 		"message": "internal server error",
 	})
 }
+
