@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PAT }}
 
     - name: Create text file
       run: echo hello > file.txt
@@ -19,7 +21,7 @@ jobs:
         git config --global user.email "dummy@email.com"
         git config --global user.name "First Last"
         git add . && git commit -m "Added text file"
-        git push origin master
+        git push
 
     - name: Set up Go
       uses: actions/setup-go@v2
