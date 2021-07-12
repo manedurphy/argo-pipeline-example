@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-            
-    - name: Install make
-      run: |
-        cat main.go
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
     
     - name: Docker Login
       uses: docker/login-action@v1.10.0
