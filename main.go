@@ -10,6 +10,7 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/ping", routes.Ping)
+	r.GET("/post", routes.GetPost)
 	r.GET("/healthz", routes.Healthz)
 
 	r.Run()
