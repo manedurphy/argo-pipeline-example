@@ -15,5 +15,3 @@ func main() {
 
 	r.Run()
 }
-
-func fakeFeature1() {}
