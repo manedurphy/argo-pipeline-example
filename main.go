@@ -1,7 +1,7 @@
 package main
 
 import (
-	"architecture/routes"
+	"argo-pipeline/routes"
 	"fmt"
 
 	"github.com/gin-gonic/gin"

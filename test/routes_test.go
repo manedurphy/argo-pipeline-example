@@ -1,7 +1,7 @@
 package test
 
 import (
-	"architecture/routes"
+	"argo-pipeline/routes"
 	"net/http"
 	"net/http/httptest"
 	"testing"
