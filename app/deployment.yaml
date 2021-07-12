@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: ping-pong
-        image: manedurphy/ping-pong
+        image: manedurphy/ping-pong:1.0.0
         ports:
         - containerPort: 8080
