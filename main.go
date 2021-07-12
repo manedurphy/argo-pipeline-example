@@ -16,6 +16,8 @@ func main() {
 
 	feature1()
 	feature2()
+	feature3()
+	feature4()
 
 	r.Run()
 }
@@ -26,4 +28,12 @@ func feature1() {
 
 func feature2() {
 	fmt.Println("Feature 2 activated")
+}
+
+func feature3() {
+	fmt.Println("Feature for v1.2.3 activated")
+}
+
+func feature4() {
+	fmt.Println("Feature for v1.2.3 activated")
 }
