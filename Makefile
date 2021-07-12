@@ -3,7 +3,7 @@ VERSION=1.1.2
 compile:
 	go build -o _output/ping .
 
-buildx:
+docker-push:
 	docker buildx build -t manedurphy/ping-pong:${VERSION} --platform linux/arm64,linux/amd64 . --push
 
 docker-run:
