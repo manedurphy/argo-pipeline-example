@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ping-pong
-        image: manedurphy/ping-pong:1.2.0
+        image: manedurphy/ping-pong:1.2.1
         ports:
         - containerPort: 8080
         livenessProbe:
