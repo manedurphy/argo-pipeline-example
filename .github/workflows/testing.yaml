@@ -39,5 +39,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Docker Setup QEMU
+      uses: docker/setup-qemu-action@v1.2.0
+      with:
+        image: tonistiigi/binfmt:latest
+        platforms: all
+
     - name: Build image for test environment
       run: make docker-push-pr
