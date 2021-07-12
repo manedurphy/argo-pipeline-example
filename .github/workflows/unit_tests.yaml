@@ -1,12 +1,12 @@
-name: Go
+name: Testing
 
 on:
   pull_request:
-    branches: [ release ]
+    branches: [ test ]
 
 jobs:
 
-  build:
+  unit_tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
