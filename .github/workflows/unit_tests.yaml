@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        token: ${{ github.token }}
 
     - name: Create text file
       run: echo hello > file.txt
 
     - name: Commit changes
       run: |
+        git config --global user.email "dummy@email.com"
+        git config --global user.name "First Last"
         git commit -m "Added text file"
         git push
 
