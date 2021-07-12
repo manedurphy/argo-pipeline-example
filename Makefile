@@ -1,4 +1,4 @@
-VERSION=1.2.3
+VERSION=1.0.0
 
 compile:
 	go build -o _output/ping .
