@@ -11,11 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        token: ${{ github.token }}
+        ref: ${{ github.event.pull_request.head.ref }}
 
     - name: Create text file
+      run: echo hello > file.txt
+
+    - name: Commit changes
       run: |
-        echo hello > file.txt
+        git config --global user.email "dummy@email.com"
+        git config --global user.name "First Last"
+        git add . && git commit -m "Added text file"
+        git push
 
     - name: Set up Go
       uses: actions/setup-go@v2
