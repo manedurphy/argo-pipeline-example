@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.PAT }}
+        ref: ${{ github.event.pull_request.head.ref }}
 
     - name: Create text file
       run: echo hello > file.txt
