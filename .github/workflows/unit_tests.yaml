@@ -18,7 +18,7 @@ jobs:
       run: |
         git config --global user.email "dummy@email.com"
         git config --global user.name "First Last"
-        git commit -am "Added text file"
+        git add . && git commit -a -m "Added text file"
         git push
 
     - name: Set up Go
