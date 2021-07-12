@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        token: ${{ github.token }}
+        run: |
+          echo hello > file.txt
 
     - name: Set up Go
       uses: actions/setup-go@v2
