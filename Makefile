@@ -1,8 +1,10 @@
+VERSION=1.1.1
+
 compile:
 	go build -o _output/ping .
 
 buildx:
-	docker buildx build -t manedurphy/ping-pong:1.0.0 --platform linux/arm64,linux/amd64 . --push
+	docker buildx build -t manedurphy/ping-pong:${VERSION} --platform linux/arm64,linux/amd64 . --push
 
 docker-run:
 	docker run -d --rm -p 8080:8080 --name ping-pong manedurphy/ping-pong
