@@ -13,9 +13,7 @@ jobs:
             
     - name: Install make
       run: |
-        # sudo apt install make
-        ls
-        # cat Makefile
+        cat main.go
     
     - name: Docker Login
       uses: docker/login-action@v1.10.0
