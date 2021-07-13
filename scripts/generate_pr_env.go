@@ -27,7 +27,7 @@ func main() {
 	name = "ping-pong-deployment-" + *commit
 	app = "ping-pong-" + *commit
 	ns = "development"
-	filename := "k8s/development/" + ns + ".yaml"
+	filename := "k8s/development/development.yaml"
 
 	namespace, _ := generateNamespace()
 	deployment, _ := generateDeployment()
