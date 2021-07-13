@@ -1,0 +1,29 @@
+name: Development build & deploy
+
+on:
+  push:
+    branches: [ development ]
+
+jobs:
+  build_dev:
+    name: Build image for development environment
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Docker Login
+      uses: docker/login-action@v1.10.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+
+    - name: Docker Setup QEMU
+      uses: docker/setup-qemu-action@v1.2.0
+      with:
+        image: tonistiigi/binfmt:latest
+        platforms: all
+
+    - name: Build image for test environment
+      run: |
+        docker buildx create --name my-builder --use
+        make docker-push-pr
