@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: development
+spec: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+        app: ping-pong-545c697
+    name: ping-pong-deployment-545c697
+    namespace: development
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: ping-pong-545c697
+    template:
+        metadata:
+            labels:
+                app: ping-pong-545c697
+        spec:
+            containers:
+              - image: manedurphy/ping-pong:545c697
+                livenessProbe:
+                    httpGet:
+                        path: /healthz
+                        port: 8080
+                    initialDelaySeconds: 3
+                    periodSeconds: 3
+                name: ping-pong-545c697
+                ports:
+                  - containerPort: 8080
+                startupProbe:
+                    failureThreshold: 30
+                    httpGet:
+                        path: /healthz
+                        port: 8080
+                    periodSeconds: 10

@@ -26,8 +26,8 @@ func main() {
 
 	name = "ping-pong-deployment-" + *commit
 	app = "ping-pong-" + *commit
-	ns = "pr-" + *commit
-	filename := "app/" + ns + ".yaml"
+	ns = "development"
+	filename := "k8s/development/" + ns + ".yaml"
 
 	namespace, _ := generateNamespace()
 	deployment, _ := generateDeployment()
@@ -95,7 +95,7 @@ func generateDeployment() ([]byte, error) {
 					"containers": []map[string]interface{}{
 						{
 							"name":  app,
-							"image": "manedurphy/ping-pong:" + *commit,
+							"image": "manedurphy/ping-pong:development",
 							"ports": []map[string]int{
 								{
 									"containerPort": 8080,
