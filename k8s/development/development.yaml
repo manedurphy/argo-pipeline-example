@@ -8,28 +8,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
     labels:
-        app: ping-pong-de7b109
-    name: ping-pong-deployment-de7b109
+        app: ping-pong-0ee70d6
+    name: ping-pong-deployment-0ee70d6
     namespace: development
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: ping-pong-de7b109
+            app: ping-pong-0ee70d6
     template:
         metadata:
             labels:
-                app: ping-pong-de7b109
+                app: ping-pong-0ee70d6
         spec:
             containers:
               - image: manedurphy/ping-pong:development
+                imagePullPolicy: Always
                 livenessProbe:
                     httpGet:
                         path: /healthz
                         port: 8080
                     initialDelaySeconds: 3
                     periodSeconds: 3
-                name: ping-pong-de7b109
+                name: ping-pong-0ee70d6
                 ports:
                   - containerPort: 8080
                 startupProbe:
