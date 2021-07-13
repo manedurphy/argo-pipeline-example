@@ -107,8 +107,9 @@ func generateDeployment() ([]byte, error) {
 				"spec": map[string]interface{}{
 					"containers": []map[string]interface{}{
 						{
-							"name":  app,
-							"image": "manedurphy/ping-pong:development",
+							"name":            app,
+							"image":           "manedurphy/ping-pong:development",
+							"imagePullPolicy": "Always",
 							"ports": []map[string]int{
 								{
 									"containerPort": 8080,
