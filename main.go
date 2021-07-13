@@ -21,7 +21,7 @@ func main() {
 }
 
 func feature1() {
-	fmt.Println("Feature 1 for 1.1.0")
+	fmt.Println("Feature 1 for v1.1.0")
 }
 
 func feature2() {
