@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"log"
 	"os"
 
 	"gopkg.in/yaml.v3"
@@ -26,22 +28,33 @@ func main() {
 
 	name = "ping-pong-deployment-" + *commit
 	app = "ping-pong-" + *commit
-	ns = "pr-" + *commit
-	filename := "app/" + ns + ".yaml"
+	ns = "development"
+	filename := "k8s/development/development.yaml"
 
 	namespace, _ := generateNamespace()
 	deployment, _ := generateDeployment()
 
-	os.WriteFile(filename, namespace, 0644)
+	err := os.WriteFile(filename, namespace, 0644)
 
-	f, _ := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		log.Fatalf("could not write development yaml file: %v", err)
+	}
+
+	f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+
+	if err != nil {
+		log.Fatalf("could not open development yaml file: %v", err)
+	}
+
 	defer f.Close()
 
 	if _, err := f.WriteString("---\n"); err != nil {
+		fmt.Println("Panic on line 49")
 		panic(err)
 	}
 
 	if _, err := f.WriteString(string(deployment)); err != nil {
+		fmt.Println("Panic on line 54")
 		panic(err)
 	}
 
@@ -95,7 +108,7 @@ func generateDeployment() ([]byte, error) {
 					"containers": []map[string]interface{}{
 						{
 							"name":  app,
-							"image": "manedurphy/ping-pong:" + *commit,
+							"image": "manedurphy/ping-pong:development",
 							"ports": []map[string]int{
 								{
 									"containerPort": 8080,

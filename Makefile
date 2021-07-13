@@ -8,7 +8,7 @@ docker-push:
 	docker buildx build -t manedurphy/ping-pong:${VERSION} --platform linux/arm64,linux/amd64 . --push
 
 docker-push-pr:
-	docker buildx build -t manedurphy/ping-pong:${COMMIT} --platform linux/arm64,linux/amd64 . --push
+	docker buildx build -t manedurphy/ping-pong:development --platform linux/arm64,linux/amd64 . --push
 
 docker-run:
 	docker run -d --rm -p 8080:8080 --name ping-pong manedurphy/ping-pong
