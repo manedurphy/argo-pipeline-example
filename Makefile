@@ -1,4 +1,4 @@
-VERSION=1.1.0
+VERSION=1.1.1
 COMMIT=$(shell git log -n 1 --pretty=format:'%h')
 
 compile:
