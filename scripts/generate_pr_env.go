@@ -34,12 +34,16 @@ func main() {
 	namespace, _ := generateNamespace()
 	deployment, _ := generateDeployment()
 
-	os.WriteFile(filename, namespace, 0644)
+	err := os.WriteFile(filename, namespace, 0644)
+
+	if err != nil {
+		log.Fatalf("could not write development yaml file: %v", err)
+	}
 
 	f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
 
 	if err != nil {
-		log.Fatalf("could not open development ymal file: %v", err)
+		log.Fatalf("could not open development yaml file: %v", err)
 	}
 
 	defer f.Close()
