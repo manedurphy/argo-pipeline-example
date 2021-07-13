@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"log"
 	"os"
 
 	"gopkg.in/yaml.v3"
@@ -34,14 +36,21 @@ func main() {
 
 	os.WriteFile(filename, namespace, 0644)
 
-	f, _ := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	f, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+
+	if err != nil {
+		log.Fatalf("could not open development ymal file: %v", err)
+	}
+
 	defer f.Close()
 
 	if _, err := f.WriteString("---\n"); err != nil {
+		fmt.Println("Panic on line 49")
 		panic(err)
 	}
 
 	if _, err := f.WriteString(string(deployment)); err != nil {
+		fmt.Println("Panic on line 54")
 		panic(err)
 	}
 
